@@ -7,10 +7,17 @@
 	<script src="chartHelper.js"></script>
 	<script>
 	window.onload = function() {
-		var data = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-		var scatterChart = chartHelper(data, 1000, 1000, 10, "body");
-		scatterChart[2].on("mouseover", function() {
-			console.log($(this).attr("cx"));
+		$.getJSON("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json", function(response) {
+			// var data = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+			console.log(response);
+			var data = [];
+			for(var i = 0; i < response.length; i++) {
+				data.push(response[i].Seconds);
+			}
+			var scatterChart = scatterGraph(data, 1000, 1000, 10, "body");
+			scatterChart[2].on("mouseover", function() {
+				console.log($(this).attr("cx"));
+			});
 		});
 	}
 

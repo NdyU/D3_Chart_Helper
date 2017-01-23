@@ -14,14 +14,25 @@
 			for(var i = 0; i < response.length; i++) {
 				data.push(response[i].Seconds);
 			}
-			var scatterChart = scatterGraph(data, 1000, 1000, 10, "body");
-			scatterChart[2].on("mouseover", function() {
-				console.log($(this).attr("cx"));
+		  var margin = {
+		    left: 50,
+		    right: 10,
+		    top: 10,
+		    bottom: 30
+		  };
+			var scatterChart = scatterXGraph(data, margin, 1000, 1000, 10, "body");
+			scatterChart[1].on("mouseover", function() {
+				console.log(d3.selectAll("circle").data()[[$(this).attr("id")]]);
 			});
 		});
 	}
 
 	</script>
+	<style type="text/css">
+		body {
+			margin: none;
+		}
+	</style>
 </head>
 <body>
 

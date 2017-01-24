@@ -20,7 +20,7 @@
 		    top: 10,
 		    bottom: 30
 		  };
-			var scatterChart = scatterXGraph(data, margin, 1000, 1000, 10, "body");
+			var scatterChart = barYGraph(data, margin, 1000, 1000, 10, "body");
 			scatterChart[1].on("mouseover", function() {
 				console.log(d3.selectAll("circle").data()[[$(this).attr("id")]]);
 			});
